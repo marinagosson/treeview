@@ -1,6 +1,6 @@
 # Desafio Tractian
 
-<img src="docs" alt="preview.gif">
+<img src="/docs/preview.gif" width="200px"/>
 
 Este projeto foi desenvolvido para gerenciar empresas, localizações e ativos (assets), usando uma arquitetura baseada em Clean Architecture com Flutter. Ele prioriza a separação de responsabilidades, seguindo os princípios de SOLID, com foco em escalabilidade e testabilidade.
 
