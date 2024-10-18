@@ -1,66 +1,69 @@
-# Desafio Tractian
+# Tractian Challenge
 
 <img src="/docs/preview.gif" width="200px"/>
 
-Este projeto foi desenvolvido para gerenciar empresas, localizações e ativos (assets), usando uma arquitetura baseada em Clean Architecture com Flutter. Ele prioriza a separação de responsabilidades, seguindo os princípios de SOLID, com foco em escalabilidade e testabilidade.
+This project was developed to manage companies, locations, and assets using a Clean Architecture-based approach with Flutter. It emphasizes separation of responsibilities, adhering to SOLID principles, focusing on scalability and testability.
 
-### Arquitetura
+### Architecture
 
-1. Camadas
+1. Layers
 
-   **Apresentação (Presenter):** Gerencia a interação com o usuário, com Widgets e Controllers que acionam os casos de uso.
-   **Domínio (Domain):** Contém as regras de negócio, como os Use Cases e os Repositórios (interfaces).
-   **Dados (Data):** Acessa APIs e banco de dados local (SQLite) via repositórios implementados.
+**Presentation (Presenter):** Manages user interaction with Widgets and Controllers that trigger use cases. 
+**Domain:** Contains business logic, including Use Cases and Repository interfaces. 
+**Data**: Accesses APIs and local database (SQLite) via implemented repositories.
 
+2. Asynchronous Processing
 
-2. Processamento Assíncrono
-   Utilizamos Isolates para realizar processamento pesado, como a conversão de dados recebidos da API antes de serem armazenados no banco de dados, garantindo uma interface responsiva.
+Isolates are used for heavy processing, such as converting API data before storing it in the database, ensuring a responsive interface.
 
-3. Gerenciamento de Estado
-   O gerenciamento de estado é feito de forma manual com setState() ou ValueNotifier, garantindo simplicidade, mas pronto para escalabilidade com soluções como Bloc ou Riverpod, se necessário.
+3. State Management
 
-4. Banco de Dados
-   Usamos SQLite via sqflite, com suporte a batch processing para operações eficientes em lote.
+State is manually managed with setState() or ValueNotifier, keeping it simple but ready for scalability with solutions like Bloc or Riverpod, if needed.
 
-5. Tratamento de Erros
-   Os erros são tratados usando um padrão de Resource, encapsulando falhas e sucessos, seguindo uma abordagem funcional para garantir previsibilidade.
+4. Database
 
-### Tecnologias
+SQLite is used via the sqflite package, with support for batch processing to handle bulk operations efficiently.
 
-- Flutter (3.22.3): Framework para construção da interface do usuário.
-- Sqflite: Biblioteca para interação com o banco de dados SQLite.
-- Dio: Biblioteca para requisições HTTP.
-- Isolates: Para processamento em segundo plano.
-- GetIt: Para injeção de dependências.
+5. Error Handling
 
-### Execução e Configuração
+Errors are managed using a Resource pattern, encapsulating failures and successes, following a functional approach to ensure predictability.
 
-Clone o repositório:
+### Technologies
 
-`git clone https://github.com/seu-repositorio.git`
+- Flutter (3.22.3): Framework for building the user interface.
+- Sqflite: Library for SQLite database interaction.
+- Dio: Library for HTTP requests.
+- Isolates: For background processing.
+- GetIt: For dependency injection.
 
-Instale as dependências:
+### Execution and Configuration
+
+Clone the repository:
+
+`git clone https://github.com/marinagosson/treeview.git`
+
+Install dependencies:
 
 `flutter pub get`
 
-Execute a aplicação:
+Run the application:
 
 `flutter run`
 
-### Futuras Melhorias
+### Future Improvements
 
-- **Gerenciamento de estado:** Poderia ser melhorado com a implementação de uma solução mais robusta, como Riverpod ou Bloc, dependendo da escalabilidade do projeto.
+- **State Management:** Could be enhanced by implementing a more robust solution like Riverpod or Bloc, depending on the scalability needs of the project.
 
-- **Testes:** Testes unitários e de integração mais extensivos podem ser implementados em todas as camadas.
+- **Testing**: More extensive unit and integration tests can be implemented across all layers.
 
-- **Caching avançado:** Implementar uma lógica de caching inteligente para otimizar o desempenho, sincronizando dados com a API quando necessário.
+- **Advanced Caching**: Implement intelligent caching logic to optimize performance, synchronizing data with the API when needed.
 
-- *Sistema de temas:* Implementar um sistema de temas dinâmicos para permitir mudanças em tempo real no modo de exibição (claro/escuro) e ajuste de brilho. Isso traria mais flexibilidade e personalização para os usuários, permitindo que eles ajustem o visual da aplicação de acordo com suas preferências.
+- **Theme System:** Implement a dynamic theme system to allow real-time changes to the display mode (light/dark) and brightness adjustment. This would bring more flexibility and customization options for users, enabling them to adjust the app's look according to their preferences.
 
-- **Internacionalização (i18n):** Introduzir a internacionalização (i18n) para suportar múltiplos idiomas no aplicativo. Atualmente, os textos são fixos e não oferecem suporte a outras regiões. Com essa melhoria, o app seria acessível a um público global, tornando-o mais inclusivo e expandindo seu alcance.
+- **Internationalization (i18n):** Introduce internationalization (i18n) to support multiple languages. Currently, the text is hardcoded and does not support other regions. This improvement would make the app accessible to a global audience, increasing its inclusiveness and expanding its reach.
 
-- **Otimização da logica de construção da arvore de assets:** Refatorar a lógica atual de construção da árvore de assets e locations para consultar os dados diretamente no banco de dados, evitando a lógica em loops como for que consome mais tempo e recursos. Essa mudança resultaria em melhor performance ao lidar com grandes quantidades de dados, especialmente quando o número de assets e locations for significativo.
+- **Optimization of the Asset Tree Construction Logic:** Improve the current logic of building the asset and location tree to directly query the database, avoiding loops like for that consume more time and resources. This change would result in better performance when handling large amounts of data, especially when the number of assets and locations is significant.
 
-- **Layout da arvore:** Melhorar a animação ao clicar no nó da arvore.
+- **Tree Layout**: Enhance the animation when clicking the tree node.
 
-- **Gateway da api:** Adaptar para realizar outros metodos de requisições e tratar de forma geral os erros;
+- **API Gateway:** Adapt it to handle other request methods (e.g., PUT, DELETE, POST) and handle errors in a general manner.
